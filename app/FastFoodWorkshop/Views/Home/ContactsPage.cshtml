@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "ContactsPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="ffw-text-brown text-center titleMargin">About Us</h2>
+<div class="formDiv salad08">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button id="whoAreWeButton" class="btn btn-default custom-btn">Who are we</button>
+                <button id="mapButton" class="btn btn-default custom-btn">Map</button>
+                <button id="contactsButton" class="btn btn-default custom-btn">Contacts</button>
+                <a class="btn btn-default custom-btn" asp-controller="@StringConstants.Applicant" asp-action="@StringConstants.JoinUs">Join Us</a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div id="whoAreWePanel" class="col-sm-4 col-md-6 col-lg-10 formDiv">
+                <p class="ffw-text-font-size ffw-text-brown">
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div id="mapPanel" class="col-sm-4 col-md-6 col-lg-10 formDiv">
+                <iframe src="https://www.google.com/maps/embed?pb=" width="1020" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div id="contactsPanel" class="col-sm-4 col-md-6 col-lg-10 formDiv">
+                <p class="ffw-contacts-text ffw-text-brown">Company Address: Sofia, Bulgaria, Somewhere str. 15</p>
+                <p class="ffw-contacts-text ffw-text-brown">Company Phone: 555-555-555</p>
+                <p class="ffw-contacts-text ffw-text-brown">Company Email: company@company</p>
+                <p class="ffw-contacts-text ffw-text-brown">Postal Code: 999</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-default custom-btn" asp-area="" asp-controller="Home" asp-action="Index">Back</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#whoAreWeButton").click(function () {
+            $("#whoAreWePanel").toggle(700)
+            $("#mapPanel").hide()
+            $("#contactsPanel").hide()
+        });
+    });
+    $(document).ready(function () {
+        $("#mapButton").click(function () {
+            $("#mapPanel").toggle(700)
+            $("#whoAreWePanel").hide()
+            $("#contactsPanel").hide()
+        });
+    });
+    $(document).ready(function () {
+        $("#contactsButton").click(function () {
+            $("#contactsPanel").toggle(700)
+            $("#whoAreWePanel").hide()
+            $("#mapPanel").hide()
+        });
+    });
+</script>
+
+

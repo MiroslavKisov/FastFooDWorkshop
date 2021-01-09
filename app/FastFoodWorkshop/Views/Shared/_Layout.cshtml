@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<FastFoodUser> SignInManager
+@inject UserManager<FastFoodUser> UserManager
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        FastFoodWorkshop
+    </title>
+    <environment include="Development">
+        <link rel="stylesheet" type="text/css" href="~/css/reset.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="~/css/style.css" media="all" />
+        <script type="text/javascript" src="~/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="~/js/popper.min.js"></script>
+        <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    </environment>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-ffw font-weight-bold">
+            <a id="navAnchor" class="navbar-brand" href="/">Fast Food Workshop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
+                <ul class="nav navbar-nav">
+                    <partial name="_LeftNavItems" />
+                </ul>
+                <ul class="nav navbar-nav">
+                    <partial name="_RightNavItems" />
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            @RenderBody()
+        </main>
+
+        <footer>
+            <div class="text-center">
+                &copy; Fast Food Workshop Inc. All rights reserved.
+            </div>
+        </footer>
+    </div>
+    @*<partial name="_CookieConsentPartial" />*@
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿@model UserDetailsViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">@ViewData["Title"]</h2>
+
+<div class="formDiv burger03">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <button id="editButton" class="btn btn-default custom-btn">Edit</button>
+        </div>
+        <div class="row justify-content-center">
+            <div id="editPanel" class="col-sm-4 col-md-8 col-lg-10 formDiv">
+                <div class="w-50 mx-auto mt-4">
+                    <h4 class="ffw-text-brown text-center titleMargin">Edit</h4>
+                    <hr />
+                    <form asp-controller=@StringConstants.User asp-action=@StringConstants.Edit method="post">
+                        <div class="d-flex justify-content-between">
+                            <div class="form-group width-size">
+                                <label asp-for="FirstName" class="ffw-text-brown"></label>
+                                <input asp-for="FirstName" class="form-control" value=@Model.FirstName />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group width-size">
+                                <label asp-for="LastName" class="ffw-text-brown"></label>
+                                <input asp-for="LastName" class="form-control" value=@Model.LastName />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-group width-size">
+                                <label asp-for="Username" class="ffw-text-brown"></label>
+                                <input asp-for="Username" class="form-control" value=@Model.Username />
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                            </div>
+                            <div class="form-group width-size">
+                                <label asp-for="BirthDate" class="ffw-text-brown"></label>
+                                <input type="date" asp-for="BirthDate" class="form-control" value=@Model.BirthDate />
+                                <span asp-validation-for="BirthDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-group width-size">
+                                <label asp-for="Address" class="ffw-text-brown">Address</label>
+                                <input asp-for="Address" class="form-control" value=@Model.Address placeholder="Address"/>
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                            <div class="form-group width-size">
+                                <label asp-for="PhoneNumber" class="ffw-text-brown">Phone number</label>
+                                <input asp-for="PhoneNumber" class="form-control" value=@Model.PhoneNumber placeholder="Phone number"/>
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <button type="submit" class="btn btn-default custom-btn">Edit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-default custom-btn" asp-area="" asp-controller=@StringConstants.User asp-action=@StringConstants.MyProfile>Back</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#editButton").click(function () {
+            $("#editPanel").toggle(700)
+        });
+    });
+</script>

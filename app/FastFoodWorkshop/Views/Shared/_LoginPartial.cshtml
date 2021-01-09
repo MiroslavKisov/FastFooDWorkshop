@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using FastFoodWorkshop.Models
+@inject SignInManager<FastFoodUser> SignInManager
+@inject UserManager<FastFoodUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-controller=@StringConstants.User asp-action=@StringConstants.Logout method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+            </li>
+            <li>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-controller=@StringConstants.User asp-action=@StringConstants.Register>Register</a></li>
+        <li><a asp-controller=@StringConstants.User asp-action=@StringConstants.Login>Login</a></li>
+    </ul>
+}

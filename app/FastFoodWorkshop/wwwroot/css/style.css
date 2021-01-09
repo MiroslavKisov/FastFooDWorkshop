@@ -1,0 +1,527 @@
+.bg-ffw {
+    background-color: #f9ab36;
+}
+
+#tableCategories.table-ffw {
+    background-color: #f9ab36;
+}
+
+.navbar-brand {
+    font-size: 25px;
+}
+
+#rememberMe.form-group {
+    margin-left:19px;
+}
+
+.forgotPassword {
+    color: #8e3904;
+    margin-left: 700.5px;
+}
+
+li {
+    font-size: 17px;
+}
+
+.button-size {
+    font-size: 17px;
+}
+
+.ffw-text-white {
+    color: white;
+}
+
+.ffw-text-brown {
+    color: #8e3904;
+}
+
+.hr-size {
+    height: 2px;
+}
+
+.width-size {
+    width: 48%;
+}
+
+.centeredDiv {
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 800px;
+    height: 100px;
+    background-color: green;
+}
+
+.formDiv {
+    background-color: white;
+    padding: 20px;
+    border-radius: 25px;
+    border: 2px solid #f9ab36;
+    align-content: center;
+    margin-top: 20px;
+}
+
+#navigationAnchor.nav-link {
+    color: #8e3904;
+}
+
+#dropdownMenuLink {
+    color: #8e3904;
+}
+
+th {
+    color:white;
+}
+
+td {
+    color:white;
+}
+
+#navAnchor.navbar-brand {
+    color: #8e3904;
+}
+
+.ffw-text-font-size {
+    font-size: 16px;
+    font-style:oblique;
+}
+
+.ffw-contacts-text {
+    font-size: 20px;
+    font-stretch:expanded;
+    font-style:oblique;
+}
+
+.btn-default.custom-btn {
+    background-color: #f9ab36;
+    color: #8e3904;
+}
+
+.btn-default.table-btn {
+    background-color: #8e3904;
+    color: #f9ab36;
+}
+
+.googleMap {
+    height: 800px;
+}
+
+.titleMargin {
+    margin-top: 7px;
+}
+
+p.successMsg {
+    color: #8e3904;
+    font-size: 17px;
+}
+
+footer {
+    height: 25px;
+    background-color: #f9ab36;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+body::after {
+    content: '';
+    display: block;
+    height: 100px;
+}
+
+#logOutButton {
+    color: #8e3904;
+}
+
+img#profilePhoto {
+    height:250px;
+    width:250px;
+}
+
+img#productPhoto {
+    height:90px;
+    width:120px;
+}
+
+#productPanel, formDiv {
+    display:none;
+}
+
+#productEditPanel, formDiv {
+    display: none;
+}
+
+#restaurantPanel, formDiv {
+    display:none;
+}
+
+#restaurantEditPanel, formDiv {
+    display: none;
+}
+
+#restaurantsPanel, formDiv {
+    display:none;
+}
+
+#orderPanel, formDiv {
+    display:none;
+}
+
+#complaintsPanel, formDiv {
+    display:none;
+}
+
+#cvPanel, formDiv {
+    display:none;
+}
+
+#jobPanel, formDiv {
+    display:none;
+}
+
+#educationPanel, formDiv {
+    display:none;
+}
+
+#categoryEditPanel, formDiv {
+    display: none;
+}
+
+#productCategoryPanel, formDiv {
+    display:none;
+}
+
+#carPanel, formDiv {
+    display:none;
+}
+
+#carEditPanel, formDiv {
+    display: none;
+}
+
+#menuPanel, formDiv {
+    display:none;
+}
+
+#profilePanel, formDiv {
+    display: none;
+}
+
+#loginPanel, formDiv {
+    display:none;
+}
+
+#registerPanel, formDiv {
+    display:none;
+}
+
+#whoAreWePanel, formDiv {
+    display:none;
+}
+
+#mapPanel, formDiv {
+    display:none;
+}
+
+#contactsPanel, formDiv {
+    display:none;
+}
+
+#editPanel, formDiv {
+    display:none;
+}
+
+#complaintPanel, formDiv {
+    display:none;
+}
+
+#externalLoginPanel, formDiv {
+    display:none;
+}
+
+#forgotPasswordPanel, formDiv {
+    display:none;
+}
+
+#forgotPasswordConfirmationPanel, formDiv {
+    display: none;
+}
+
+.pizza00 {
+    background-image: url("../images/pizza/pizza00.jpg");
+    background-size: cover;
+    height: 900px;
+}
+
+.pizza01 {
+    background-image: url("../images/pizza/pizza01.jpg");
+    background-size: cover;
+    height: 900px;
+}
+
+.pizza02 {
+    background-image: url("../images/pizza/pizza02.jpg");
+    background-size: cover;
+    height: 900px;
+}
+
+.pizza03 {
+    background-image: url("../images/pizza/pizza03.jpg");
+    background-size: cover;
+    height: 800px;
+}
+
+.pizza04 {
+    background-image: url("../images/pizza/pizza04.jpg");
+    background-size: cover;
+    height: 800px;
+}
+
+.pizza05 {
+    background-image: url("../images/pizza/pizza05.jpg");
+    background-size: cover;
+    height: 800px;
+}
+
+.pizza06 {
+    background-image: url("../images/pizza/pizza06.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+.pizza07 {
+    background-image: url("../images/pizza/pizza07.jpg");
+    background-size: cover;
+    height: 800px;
+}
+
+.pizza08 {
+    background-image: url("../images/pizza/pizza08.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+.pizza09 {
+    background-image: url("../images/pizza/pizza09.jpg");
+    background-size: cover;
+    height: 800px;
+}
+
+.pizza10 {
+    background-image: url("../images/pizza/pizza10.jpg");
+    background-size: cover;
+    height: 1100px;
+}
+
+
+.burger00 {
+    background-image: url("../images/burger/burger00.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.burger01 {
+    background-image: url("../images/burger/burger01.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.burger02 {
+    background-image: url("../images/burger/burger02.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.burger03 {
+    background-image: url("../images/burger/burger03.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.burger04 {
+    background-image: url("../images/burger/burger04.jpg");
+    background-size: cover;
+    height: 1000px;
+}
+
+.burger05 {
+    background-image: url("../images/burger/burger05.jpg");
+    background-size: cover;
+    height: 1100px;
+}
+
+.burger06 {
+    background-image: url("../images/burger/burger06.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.burger07 {
+    background-image: url("../images/burger/burger07.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.burger08 {
+    background-image: url("../images/burger/burger08.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.burger09 {
+    background-image: url("../images/burger/burger09.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.burger10 {
+    background-image: url("../images/burger/burger10.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.doner00 {
+    background-image: url("../images/doner/doner00.jpg");
+    background-size: cover;
+    height: 1000px;
+}
+
+.doner01 {
+    background-image: url("../images/doner/doner01.jpg");
+    background-size: cover;
+    height: 700px;
+}
+
+.salad06 {
+    background-image: url("../images/salads/salad06.jpg");
+    background-size: cover;
+    height: 700px;
+}
+
+.salad07 {
+    background-image: url("../images/salads/salad07.jpg");
+    background-size: cover;
+    height: 700px;
+}
+
+.salad08 {
+    background-image: url("../images/salads/salad08.jpg");
+    background-size: cover;
+    height: 700px;
+}
+
+.salad09 {
+    background-image: url("../images/salads/salad09.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.fries00 {
+    background-image: url("../images/french_fries/fries00.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+.fries01 {
+    background-image: url("../images/french_fries/fries01.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+.fries02 {
+    background-image: url("../images/french_fries/fries02.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+.sandwich03 {
+    background-image: url("../images/sandwich/sandwich03.jpg");
+    background-size: cover;
+    height: 700px;
+}
+
+.sandwich04 {
+    background-image: url("../images/sandwich/sandwich04.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+.other00 {
+    background-image: url("../images/other/other00.jpg");
+    background-size: cover;
+    height: 800px;
+}
+
+.other01 {
+    background-image: url("../images/other/other01.jpg");
+    background-size: cover;
+    height: 800px;
+}
+
+.other02 {
+    background-image: url("../images/other/other02.jpg");
+    background-size: cover;
+    height: 800px;
+}
+
+.other03 {
+    background-image: url("../images/other/other03.jpg");
+    background-size: cover;
+    height: 800px;
+}
+
+.other04 {
+    background-image: url("../images/other/other04.jpg");
+    background-size: cover;
+    height: 800px;
+}
+
+.sandwich04 {
+    background-image: url("../images/sandwich/sandwich04.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+.sandwich04 {
+    background-image: url("../images/sandwich/sandwich04.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+.sandwich04 {
+    background-image: url("../images/sandwich/sandwich04.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+.sandwich04 {
+    background-image: url("../images/sandwich/sandwich04.jpg");
+    background-size: cover;
+    height: 500px;
+}
+
+.hotdog00 {
+    background-image: url("../images/hot_dog/hotdog00.jpg");
+    background-size: cover;
+    height: 700px;
+}
+
+.chicken_wings {
+    background-image: url("../images/chichen_wings/chicken_wings.jpg");
+    background-size: cover;
+    height: 500px;
+}

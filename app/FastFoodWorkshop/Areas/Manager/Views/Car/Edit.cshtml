@@ -1,0 +1,87 @@
+﻿@model DeliveryCarViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manager/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">Edit</h2>
+
+<div class="formDiv sandwich03">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <button id="carEditButton" class="btn btn-default custom-btn">Edit Car</button>
+        </div>
+        <div class="row justify-content-center">
+            <div id="carEditPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-6 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Edit Car</h4>
+                <hr />
+                <form method="post" asp-controller=@StringConstants.Car asp-action=@StringConstants.Edit>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Model" class="ffw-text-brown">Model</label>
+                            <input type="text" asp-for="Model" name="Model" class="form-control" placeholder="Model" />
+                            <span asp-validation-for="Model" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Mileage" class="ffw-text-brown">Mileage</label>
+                            <input type="number" asp-for="Mileage" name="Mileage" class="form-control" placeholder="Mileage" />
+                            <span asp-validation-for="Mileage" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="ProductionDate" class="ffw-text-brown">Production Date</label>
+                            <input type="date" asp-for="ProductionDate" name="ProductionDate" class="form-control" placeholder="Production Date" />
+                            <span asp-validation-for="ProductionDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="TankCapacity" class="ffw-text-brown">Tank capacity</label>
+                            <input type="number" asp-for="TankCapacity" name="TankCapacity" class="form-control" placeholder="Tank capacity" />
+                            <span asp-validation-for="TankCapacity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="ConsumptionPerMile" class="ffw-text-brown">Consumption per mile</label>
+                            <input type="number" asp-for="ConsumptionPerMile" name="ConsumptionPerMile" class="form-control" placeholder="Consumption per mile" />
+                            <span asp-validation-for="ConsumptionPerMile" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label>Restaurants</label>
+                            <select asp-for="RestaurantId" name="RestaurantId" class="form-control" asp-items="ViewBag.RestaurantsList">
+                                <option selected="selected" disabled="disabled">--Select a Restaurant--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around mt-4">
+                        <button type="submit" class="btn btn-default custom-btn">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-around mt-4">
+    <a class="btn btn-default custom-btn" asp-area="@StringConstants.Manager" asp-controller=@StringConstants.Restaurant asp-action=@StringConstants.Restaurants>Restaurants</a>
+    <a class="btn btn-default custom-btn" asp-area="@StringConstants.Manager" asp-controller=@StringConstants.Car asp-action=@StringConstants.Cars>Cars</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#carEditButton").click(function () {
+            $("#carEditPanel").toggle(700)
+        });
+    });
+</script>

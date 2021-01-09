@@ -1,0 +1,64 @@
+﻿@model UserComplaintViewModel
+@{
+    ViewData["Title"] = "Complaint";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">@ViewData["Title"]</h2>
+
+@if (TempData[TempDataKeys.TempDataSuccessComplaintKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessComplaintKey]</strong>
+    </div>
+}
+
+<div class="formDiv salad09">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <button id="complaintButton" class="btn btn-default custom-btn">Edit</button>
+        </div>
+        <div class="row justify-content-center">
+            <div id="complaintPanel" class="col-sm-4 col-md-6 col-lg-8 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Complaint</h4>
+                <hr />
+                <form method="post" asp-area="" asp-controller=@StringConstants.User asp-action=@StringConstants.Complaint>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Description" class="ffw-text-brown">Complaint</label>
+                            <textarea rows="5" asp-for="Description" class="form-control" placeholder="Complaint"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Restaurants</label>
+                            <select asp-for="RestaurantId" class="form-control" asp-items="ViewBag.Restaurants"></select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default custom-btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-default custom-btn" asp-area="" asp-controller=@StringConstants.Home asp-action=@StringConstants.Index>Back</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#complaintButton").click(function () {
+            $("#complaintPanel").toggle(700)
+        });
+    });
+</script>

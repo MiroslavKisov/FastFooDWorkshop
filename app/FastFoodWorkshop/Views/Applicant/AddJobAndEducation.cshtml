@@ -1,0 +1,143 @@
+﻿@model JobAndEducationViewModel
+@{
+    ViewData["Title"] = "AddJobAndEducation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">Add Job And Education</h2>
+
+@if (TempData[TempDataKeys.TempDataSuccessJobKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessJobKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataSuccessJoinUsKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessJoinUsKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataSuccessEducationKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessEducationKey]</strong>
+    </div>
+}
+
+<div class="formDiv burger04">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button id="jobButton" class="btn btn-default custom-btn">Add Job</button>
+                <button id="educationButton" class="btn btn-default custom-btn">Add Education</button>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div id="jobPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-8 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Add your Job</h4>
+                <hr />
+                <form method="post" asp-controller=@StringConstants.Applicant asp-action=@StringConstants.AddJob>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group width-size">
+                            <label asp-for="JobInputModel.StartDate" class="ffw-text-brown">Start Date</label>
+                            <input type="date" asp-for="JobInputModel.StartDate" name="StartDate" class="form-control" placeholder="Start Date" />
+                            <span asp-validation-for="JobInputModel.StartDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group width-size">
+                            <label asp-for="JobInputModel.EndDate" class="ffw-text-brown">End Date</label>
+                            <input type="date" asp-for="JobInputModel.EndDate" name="EndDate" class="form-control" placeholder="End Date" />
+                            <span asp-validation-for="JobInputModel.EndDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="JobInputModel.Salary" class="ffw-text-brown">Salary</label>
+                            <input asp-for="JobInputModel.Salary" name="Salary" class="form-control" placeholder="Salary" />
+                            <span asp-validation-for="JobInputModel.Salary" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="JobInputModel.CompanyName" class="ffw-text-brown">Company Name</label>
+                            <input asp-for="JobInputModel.CompanyName" name="CompanyName" class="form-control" placeholder="Company Name" />
+                            <span asp-validation-for="JobInputModel.CompanyName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="JobInputModel.JobDescription" class="ffw-text-brown">Job Description</label>
+                            <textarea asp-for="JobInputModel.JobDescription" name="JobDescription" class="form-control" placeholder="Job Description"></textarea>
+                            <span asp-validation-for="JobInputModel.JobDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default custom-btn">Add Job</button>
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-default custom-btn" asp-controller=@StringConstants.Home asp-action=@StringConstants.Index>Finish</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div id="educationPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-8 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Add your Education</h4>
+                <hr />
+                <form method="post" asp-controller=@StringConstants.Applicant asp-action=@StringConstants.AddEducation>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group width-size">
+                            <label asp-for="EducationViewModel.StartDate" class="ffw-text-brown">Start Year</label>
+                            <input type="date" asp-for="EducationViewModel.StartDate" name="StartDate" class="form-control" placeholder="Start Year" />
+                            <span asp-validation-for="EducationViewModel.StartDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group width-size">
+                            <label asp-for="EducationViewModel.EndDate" class="ffw-text-brown">End Year</label>
+                            <input type="date" asp-for="EducationViewModel.EndDate" name="EndDate" class="form-control" placeholder="End Year" />
+                            <span asp-validation-for="EducationViewModel.EndDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="EducationViewModel.OrganizationName" class="ffw-text-brown">Organization Name</label>
+                            <input type="text" asp-for="EducationViewModel.OrganizationName" name="OrganizationName" class="form-control" placeholder="Organization Name" />
+                            <span asp-validation-for="EducationViewModel.OrganizationName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default custom-btn">Add Education</button>
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-default custom-btn" asp-controller=@StringConstants.Home asp-action=@StringConstants.Index>Finish</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#jobButton").click(function () {
+            $("#jobPanel").toggle(700)
+            $("#educationPanel").hide();
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#educationButton").click(function () {
+            $("#educationPanel").toggle(700)
+            $("#jobPanel").hide();
+        })
+    })
+</script>
+

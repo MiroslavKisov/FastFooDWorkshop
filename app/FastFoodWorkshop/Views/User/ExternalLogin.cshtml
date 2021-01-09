@@ -1,0 +1,49 @@
+﻿@model UserExternalLoginViewModel
+@{
+    ViewData["Title"] = "ExternalLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">External Login</h2>
+
+<div class="formDiv fries00">
+    <div class="container-fluid col-mt-1">
+        <div class="row justify-content-center">
+            <button id="externalLoginButton" class="btn btn-default custom-btn">External Login</button>
+        </div>
+        <div class="row justify-content-center">
+            <div id="externalLoginPanel" class="col-sm-2 col-md-4 col-lg-6 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">External Login</h4>
+                <hr />
+                <form asp-controller=@StringConstants.User asp-action=@StringConstants.ExternalLoginConfirmation asp-route-returnUrl=@ViewData[StringConstants.ViewDataReturnUrl] class="mx-auto w-50" method="post">
+                    <div class="d-flex justify-content-center">
+                        <div class="form-group col-md-12">
+                            <label asp-for="Email" class="ffw-text-brown">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-default custom-btn">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-default custom-btn" asp-area="" asp-controller=@StringConstants.Home asp-action=@StringConstants.Index>Back</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#externalLoginButton").click(function () {
+            $("#externalLoginPanel").toggle(700)
+        });
+    });
+</script>

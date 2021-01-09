@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20181119213419_Initial.cs" />
+    <Compile Remove="Migrations\20181121133707_Initial.cs" />
+    <Compile Remove="Migrations\20181125180306_Initial.cs" />
+    <Compile Remove="Migrations\20181125210908_Initial.cs" />
+    <Compile Remove="Migrations\20181128152054_Initial.cs" />
+    <Compile Remove="Migrations\20181129125852_Initial.cs" />
+    <Compile Remove="Migrations\20181205120605_Initial.cs" />
+    <Compile Remove="Migrations\20181207110914_Initial.cs" />
+    <Compile Remove="Migrations\20181208121850_Initial.cs" />
+    <Compile Remove="Migrations\20181208162234_Initial.cs" />
+    <Compile Remove="Migrations\20181208203020_Initial.cs" />
+    <Compile Remove="Migrations\20181209171855_Initial.cs" />
+    <Compile Remove="Migrations\20181212171333_Initial.cs" />
+    <Compile Remove="Migrations\20181213164356_Initial.cs" />
+    <Compile Remove="Migrations\20181215102839_Initial.cs" />
+    <Compile Remove="Migrations\20181215221629_Initial.cs" />
+    <Compile Remove="Migrations\20181216222948_Initial.cs" />
+    <Compile Remove="Migrations\20181216230324_Initial.cs" />
+    <Compile Remove="Migrations\20181228201154_Initial.cs" />
+    <Compile Remove="Migrations\20181230135716_Initial.cs" />
+    <Compile Remove="Migrations\20181230142102_Initial.cs" />
+    <Compile Remove="Migrations\20181230145254_Initial.cs" />
+    <Compile Remove="Migrations\20181230152223_Initial.cs" />
+    <Compile Remove="Migrations\20181230153436_Initial.cs" />
+    <Compile Remove="Migrations\20181230183055_Initial.cs" />
+    <Compile Remove="Migrations\20181231133433_Initial.cs" />
+    <Compile Remove="Migrations\20190102184407_Initial.cs" />
+    <Compile Remove="Migrations\20190103221043_Initial.cs" />
+    <Compile Remove="Migrations\20190103222748_Initial.cs" />
+    <Compile Remove="Migrations\20190103223512_Initial.cs" />
+    <Compile Remove="Migrations\20190103233520_Initial.cs" />
+    <Compile Remove="Migrations\20190103235510_Initial.cs" />
+    <Compile Remove="Migrations\20190104004452_Initial.cs" />
+    <Compile Remove="Migrations\20190104185352_Initial.cs" />
+    <Compile Remove="Migrations\20190104233818_Initial.cs" />
+    <Compile Remove="Migrations\20190105015201_Initial.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="2.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FastFoodWorkshop.Models\FastFoodWorkshop.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.identity.entityframeworkcore\2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

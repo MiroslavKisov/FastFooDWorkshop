@@ -1,0 +1,62 @@
+﻿@model MenuViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manager/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">Edit</h2>
+
+<div class="formDiv burger06">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <button id="editButton" class="btn btn-default custom-btn">Edit Menu</button>
+        </div>
+        <div class="row justify-content-center">
+            <div id="menuPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-6 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Create Menu</h4>
+                <hr />
+                <form method="post" asp-controller="@StringConstants.Menu" asp-action="@StringConstants.Edit">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Name" class="ffw-text-brown">Menu Name</label>
+                            <input type="text" asp-for="Name" name="Name" value=@Model.Name class="form-control" placeholder="Menu Name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Discount" class="ffw-text-brown">Discount</label>
+                            <input type="number" asp-for="Discount" name="Discount" value=@Model.Discount class="form-control" placeholder="Discount" />
+                            <span asp-validation-for="Discount" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-around mt-4">
+                        <button type="submit" class="btn btn-default custom-btn">Edit</button>
+                        <a class="btn btn-default custom-btn" asp-controller="@StringConstants.Menu" asp-action="@StringConstants.Delete/@Model.Id">Delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-around mt-4">
+    <a class="btn btn-default custom-btn" asp-area="@StringConstants.Manager" asp-controller=@StringConstants.Menu asp-action=@StringConstants.Menus>Menus</a>
+    <a class="btn btn-default custom-btn" asp-area="@StringConstants.Manager" asp-controller=@StringConstants.Category asp-action=@StringConstants.Categories>Categories</a>
+    <a class="btn btn-default custom-btn" asp-area="@StringConstants.Manager" asp-controller=@StringConstants.Products asp-action=@StringConstants.Products>Products</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#editButton").click(function () {
+            $("#menuPanel").toggle(700)
+        });
+    });
+</script>
+

@@ -1,0 +1,351 @@
+﻿@model ManageViewModel
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Areas/Manager/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">@ViewData["Title"]</h2>
+
+@if (TempData[TempDataKeys.TempDataSuccessProductKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessProductKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataSuccessRestaurantKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessRestaurantKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataSuccessCarKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessCarKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataSuccessMenuKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessMenuKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataSuccessCategoryKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessCategoryKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataNonExistentMenuKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataNonExistentMenuKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataNonExistentProductKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataNonExistentProductKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataNonExistentCategoryKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataNonExistentCategoryKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataNonExistentCarKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataNonExistentCarKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataNonExistentRestaurantKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataNonExistentRestaurantKey]</strong>
+    </div>
+}
+
+<div class="formDiv burger05">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button id="productButton" class="btn btn-default custom-btn">Products</button>
+                <button id="restaurantButton" class="btn btn-default custom-btn">Restaurants</button>
+                <button id="carButton" class="btn btn-default custom-btn">Delivery Cars</button>
+                <button id="productCategoryButton" class="btn btn-default custom-btn">Categories</button>
+                <button id="menuButton" class="btn btn-default custom-btn">Menus</button>
+                <button id="applicantsButton" class="btn btn-default custom-btn">Applicants</button>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div id="productPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-6 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Add Product</h4>
+                <hr />
+                <form method="post" asp-controller=@StringConstants.Products asp-action=@StringConstants.Add enctype="multipart/form-data">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Product.Name" class="ffw-text-brown">Name</label>
+                            <input type="text" asp-for="Product.Name" name="Name" class="form-control" placeholder="Name" />
+                            <span asp-validation-for="Product.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Product.ProteinsQuantity" class="ffw-text-brown">Protein gr.</label>
+                            <input type="number" asp-for="Product.ProteinsQuantity" name="ProteinsQuantity" class="form-control" placeholder="Protein gr." />
+                            <span asp-validation-for="Product.ProteinsQuantity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Product.CarbohydratesQuantity" class="ffw-text-brown">Carbohydrates gr.</label>
+                            <input type="number" asp-for="Product.CarbohydratesQuantity" name="CarbohydratesQuantity" class="form-control" placeholder="Carbohydrates gr." />
+                            <span asp-validation-for="Product.CarbohydratesQuantity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Product.FatQuantity" class="ffw-text-brown">Fat gr.</label>
+                            <input type="number" asp-for="Product.FatQuantity" name="FatQuantity" class="form-control" placeholder="Fat gr." />
+                            <span asp-validation-for="Product.FatQuantity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Product.Price" class="ffw-text-brown">Price</label>
+                            <input type="number" asp-for="Product.Price" name="Price" class="form-control" placeholder="Price" />
+                            <span asp-validation-for="Product.Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Category</label>
+                            <select asp-for="Product.CategoryId" name="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                                <option selected="selected" disabled="disabled">--Select a Category--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Category</label>
+                            <select asp-for="Product.MenuId" name="MenuId" class="form-control" asp-items="ViewBag.Menus">
+                                <option selected="selected" disabled="disabled">--Select a Menu--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Product.Picture">Upload Picture</label>
+                            <input asp-for="Product.Picture" id="Picture" class="form-control-file" name="Picture">
+                            <span asp-validation-for="Product.Picture" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around mt-4">
+                        <button type="submit" class="btn btn-default custom-btn">Add</button>
+                        <a class="btn btn-default custom-btn" asp-controller="@StringConstants.Products" asp-action="@StringConstants.Products">Products</a>
+                    </div>
+                </form>
+            </div>
+            <div id="restaurantPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-6 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Add Restaurant</h4>
+                <hr />
+                <form method="post" asp-controller=@StringConstants.Restaurant asp-action=@StringConstants.Add>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Restaurant.Name" class="ffw-text-brown">Name</label>
+                            <input type="text" asp-for="Restaurant.Name" class="form-control" name="Name" placeholder="Name" />
+                            <span asp-validation-for="Restaurant.Name" name="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Restaurant.Address" class="ffw-text-brown">Address</label>
+                            <input type="text" asp-for="Restaurant.Address" name="Address" class="form-control" placeholder="Address" />
+                            <span asp-validation-for="Restaurant.Address" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around mt-4">
+                        <button type="submit" class="btn btn-default custom-btn">Add</button>
+                        <a class="btn btn-default custom-btn" asp-controller="@StringConstants.Restaurant" asp-action="@StringConstants.Restaurants">Restaurants</a>
+                    </div>
+                </form>
+            </div>
+            <div id="carPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-6 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Add Car</h4>
+                <hr />
+                <form method="post" asp-controller=@StringConstants.Car asp-action=@StringConstants.Add>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="DeliveryCar.Model" class="ffw-text-brown">Model</label>
+                            <input type="text" asp-for="DeliveryCar.Model" name="Model" class="form-control" placeholder="Model" />
+                            <span asp-validation-for="DeliveryCar.Model" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="DeliveryCar.Mileage" class="ffw-text-brown">Mileage</label>
+                            <input type="number" asp-for="DeliveryCar.Mileage" name="Mileage" class="form-control" placeholder="Mileage" />
+                            <span asp-validation-for="DeliveryCar.Mileage" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="DeliveryCar.ProductionDate" class="ffw-text-brown">Production Date</label>
+                            <input type="date" asp-for="DeliveryCar.ProductionDate" name="ProductionDate" class="form-control" placeholder="Production Date" />
+                            <span asp-validation-for="DeliveryCar.ProductionDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="DeliveryCar.TankCapacity" class="ffw-text-brown">Tank capacity</label>
+                            <input type="number" asp-for="DeliveryCar.TankCapacity" name="TankCapacity" class="form-control" placeholder="Tank capacity" />
+                            <span asp-validation-for="DeliveryCar.TankCapacity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="DeliveryCar.ConsumptionPerMile" class="ffw-text-brown">Consumption per mile</label>
+                            <input type="number" asp-for="DeliveryCar.ConsumptionPerMile" name="ConsumptionPerMile" class="form-control" placeholder="Consumption per mile" />
+                            <span asp-validation-for="DeliveryCar.ConsumptionPerMile" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label>Restaurants</label>
+                            <select asp-for="Restaurant.RestaurantId" name="RestaurantId" class="form-control" asp-items="ViewBag.RestaurantsList">
+                                <option selected="selected" disabled="disabled">--Select a Restaurant--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around mt-4">
+                        <button type="submit" class="btn btn-default custom-btn">Add</button>
+                        <a class="btn btn-default custom-btn" asp-controller="@StringConstants.Car" asp-action="@StringConstants.Cars">Delivery Cars</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div id="productCategoryPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-6 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Create Category</h4>
+                <hr />
+                <form method="post" asp-controller=@StringConstants.Category asp-action=@StringConstants.Add>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Category.Name" class="ffw-text-brown">Category Name</label>
+                            <input type="text" asp-for="Category.Name" name="Name" class="form-control" placeholder="Category Name" />
+                            <span asp-validation-for="Category.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around mt-4">
+                        <button type="submit" class="btn btn-default custom-btn">Create</button>
+                        <a class="btn btn-default custom-btn" asp-controller="@StringConstants.Category" asp-action="@StringConstants.Categories">Categories</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div id="menuPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-6 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Create Menu</h4>
+                <hr />
+                <form method="post" asp-controller=@StringConstants.Menu asp-action=@StringConstants.Create>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Menu.Name" class="ffw-text-brown">Menu Name</label>
+                            <input type="text" asp-for="Menu.Name" name="Name" class="form-control" placeholder="Menu Name" />
+                            <span asp-validation-for="Menu.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Menu.Discount" class="ffw-text-brown">Discount</label>
+                            <input type="number" asp-for="Menu.Discount" name="Discount" class="form-control" placeholder="Discount" />
+                            <span asp-validation-for="Menu.Discount" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-around mt-4">
+                        <button type="submit" class="btn btn-default custom-btn">Create</button>
+                        <a class="btn btn-default custom-btn" asp-controller="@StringConstants.Menu" asp-action="@StringConstants.Menus">Menus</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#productButton").click(function () {
+            $("#productPanel").toggle(700)
+            $("#restaurantPanel").hide()
+            $("#carPanel").hide()
+            $("#productCategoryPanel").hide()
+            $("#menuPanel").hide()
+        });
+    });
+    $(document).ready(function () {
+        $("#restaurantButton").click(function () {
+            $("#restaurantPanel").toggle(700)
+            $("#productPanel").hide()
+            $("#carPanel").hide()
+            $("#productCategoryPanel").hide()
+            $("#menuPanel").hide()
+        });
+    });
+    $(document).ready(function () {
+        $("#carButton").click(function () {
+            $("#carPanel").toggle(700)
+            $("#productPanel").hide()
+            $("#restaurantPanel").hide()
+            $("#productCategoryPanel").hide()
+            $("#menuPanel").hide()
+        });
+    });
+    $(document).ready(function () {
+        $("#productCategoryButton").click(function () {
+            $("#productCategoryPanel").toggle(700)
+            $("#carPanel").hide()
+            $("#productPanel").hide()
+            $("#restaurantPanel").hide()
+            $("#menuPanel").hide()
+        });
+    });
+    $(document).ready(function () {
+        $("#menuButton").click(function () {
+            $("#menuPanel").toggle(700)
+            $("#carPanel").hide()
+            $("#productPanel").hide()
+            $("#restaurantPanel").hide()
+            $("#productCategoryPanel").hide()
+        });
+    });
+</script>

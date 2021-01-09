@@ -1,0 +1,41 @@
+﻿<li class="nav-item active">
+    <a id="navigationAnchor" class="nav-link" asp-area="Manager" asp-controller="Home" asp-action="Index">Home</a>
+</li>
+<li class="nav-item active">
+    <a id="navigationAnchor" class="nav-link" asp-area="" asp-controller="User" asp-action="MyProfile">My Profile</a>
+</li>
+<li class="nav-item active">
+    <a id="navigationAnchor" class="nav-link"asp-area="Manager" asp-controller="Manage" asp-action="Manage">Manage</a>
+</li>
+<li>
+    <div class="btn-group">
+        <a class="btn btn-link nav-link ffw-text-brown button-size font-weight-bold border-0 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Restaurants
+        </a>
+
+        <div class="dropdown-menu bg-ffw" aria-labelledby="dropdownMenuLink">
+            @foreach (var restaurant in ViewBag.Restaurants)
+            {
+                <a class="dropdown-item ffw-text-brown font-weight-bold" href="#">@restaurant.Name</a>
+            }
+        </div>
+    </div>
+</li>
+<li class="nav-item active">
+    <div class="btn-group">
+        <a class="btn btn-link nav-link ffw-text-brown button-size font-weight-bold border-0 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Order Food
+        </a>
+
+        <div class="dropdown-menu bg-ffw" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item ffw-text-brown font-weight-bold" href="#">Our Menus</a>
+            <a class="dropdown-item ffw-text-brown font-weight-bold" href="#">Create Menu</a>
+        </div>
+    </div>
+</li>
+<li class="nav-item active">
+    <a id="navigationAnchor" class="nav-link" asp-controller="Home" asp-action="Index">Recipes</a>
+</li>
+<li class="nav-item active">
+    <a id="navigationAnchor" class="nav-link" asp-controller="Home" asp-action="Index">Reports</a>
+</li>

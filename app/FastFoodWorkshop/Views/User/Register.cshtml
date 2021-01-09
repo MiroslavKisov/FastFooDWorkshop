@@ -1,0 +1,106 @@
+﻿@model UserRegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">@ViewData["Title"]</h2>
+<div class="formDiv pizza03">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <button id="registerButton" class="btn btn-default custom-btn">Register</button>
+        </div>
+        <div id="registerPanel" class="w-50 mx-auto mt-4 formDiv">
+            <section>
+                <h4 class="ffw-text-brown text-center titleMargin">@ViewData["Title"]</h4>
+                <hr />
+                <form asp-controller=@StringConstants.User asp-action=@StringConstants.Register enctype="multipart/form-data" method="post">
+                    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group width-size">
+                            <label asp-for="FirstName" class="ffw-text-brown">First name</label>
+                            <input asp-for="FirstName" class="form-control" placeholder="First name" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group width-size">
+                            <label asp-for="LastName" class="ffw-text-brown">Last name</label>
+                            <input asp-for="LastName" class="form-control" placeholder="Last name" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group width-size">
+                            <label asp-for="UserName" class="ffw-text-brown">Username</label>
+                            <input type="text" asp-for="UserName" name="UserName" class="form-control" placeholder="Username" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group width-size">
+                            <label asp-for="Address" class="ffw-text-brown">Address</label>
+                            <input asp-for="Address" class="form-control" placeholder="Address" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group width-size">
+                            <label asp-for="BirthDate" class="ffw-text-brown">Date of birth</label>
+                            <input type="date" asp-for="BirthDate" class="form-control" />
+                            <span asp-validation-for="BirthDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group width-size">
+                            <label asp-for="Email" class="ffw-text-brown">Email</label>
+                            <input type="email" asp-for="Email" name="Email" class="form-control" placeholder="example@example.org" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group width-size">
+                            <label asp-for="Password" class="ffw-text-brown">Password</label>
+                            <input type="email" class="form-control" style="display:none" />
+                            <input type="text" class="form-control" style="display:none" />
+                            <input type="password" class="form-control" style="display:none" />
+                            <input type="password" asp-for="Password" class="form-control" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group width-size">
+                            <label asp-for="ConfirmPassword" class="ffw-text-brown">Confirm Password</label>
+                            <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm password" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="ffw-text-brown">Phone number</label>
+                            <input asp-for="PhoneNumber" class="form-control" placeholder="Phone number" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="form-group">
+                            <label asp-for="Picture">Upload Picture</label>
+                            <input asp-for="Picture" id="Picture" class="form-control-file" name="Picture">
+                            <span asp-validation-for="Picture" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-4">
+                        <button type="submit" class="btn btn-default custom-btn">Register</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-default custom-btn" asp-area="" asp-controller="Home" asp-action="Index">Back</a>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#registerButton").click(function () {
+            $("#registerPanel").toggle(700)
+        });
+    });
+</script>

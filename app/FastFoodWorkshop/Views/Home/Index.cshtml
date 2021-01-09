@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+@if (TempData[TempDataKeys.TempDataSuccessLoginKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessLoginKey]</strong>
+    </div>
+}
+
+<div class="jumbotron mt-3 doner00">
+
+</div>

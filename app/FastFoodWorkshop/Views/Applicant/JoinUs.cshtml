@@ -1,0 +1,104 @@
+﻿@model ApplicantCvViewModel
+@{
+    ViewData["Title"] = "Join Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">@ViewData["Title"]</h2>
+
+@if (TempData[TempDataKeys.TempDataErrorJoinUsFormKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataErrorJoinUsFormKey]</strong>
+    </div>
+}
+
+<div class="formDiv pizza02">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <button id="cvButton" class="btn btn-default custom-btn">Apply for Job</button>
+        </div>
+        <div class="row justify-content-center">
+            <div id="cvPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-8 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Add your CV</h4>
+                <hr />
+                <form method="post" enctype="multipart/form-data" asp-controller=@StringConstants.Applicant asp-action=@StringConstants.JoinUs>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group width-size">
+                            <label asp-for="ApplicantFirstName" class="ffw-text-brown">Applicant Firstname</label>
+                            <input asp-for="ApplicantFirstName" name="ApplicantFirstName" class="form-control" placeholder="Applicant Firstname" />
+                            <span asp-validation-for="ApplicantFirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group width-size">
+                            <label asp-for="ApplicantLastName" class="ffw-text-brown">Applicant Lastname</label>
+                            <input asp-for="ApplicantLastName" name="ApplicantLastName" class="form-control" placeholder="Applicant Lastname" />
+                            <span asp-validation-for="ApplicantLastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group width-size">
+                            <label asp-for="Email" class="ffw-text-brown">Email</label>
+                            <input type="email" asp-for="Email" name="Email" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group width-size">
+                            <label asp-for="BirthDate" class="ffw-text-brown">Birth Date</label>
+                            <input type="date" asp-for="BirthDate" name="BirthDate" class="form-control" />
+                            <span asp-validation-for="BirthDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="ffw-text-brown">Phone Number</label>
+                            <input asp-for="PhoneNumber" name="PhoneNumber" class="form-control" placeholder="Phone Number" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Address" class="ffw-text-brown">Address</label>
+                            <input asp-for="Address" name="Address" class="form-control" placeholder="Address" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="MotivationalLetter" class="ffw-text-brown">Motivational Letter</label>
+                            <textarea asp-for="MotivationalLetter" name="MotivationalLetter" class="form-control" rows="3" placeholder="Motivational Letter"></textarea>
+                            <span asp-validation-for="MotivationalLetter" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="form-group">
+                            <label asp-for="Picture">Upload Picture</label>
+                            <input asp-for="Picture" type="file" class="form-control-file" name="Picture">
+                            <span asp-validation-for="Picture" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-4">
+                        <button id="submitButton" type="submit" class="btn btn-default custom-btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-default custom-btn" asp-area="" asp-controller="Home" asp-action="Index">Back</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#cvButton").click(function () {
+            $("#cvPanel").toggle(700)
+        });
+    });
+</script>
+
+

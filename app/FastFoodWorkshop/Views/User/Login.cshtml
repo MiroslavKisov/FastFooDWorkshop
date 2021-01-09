@@ -1,0 +1,108 @@
+﻿@model UserLoginViewModel
+@inject SignInManager<FastFoodUser> SignInManager
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">Log In</h2>
+
+@if (TempData[TempDataKeys.TempDataSuccessRegistrationKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessRegistrationKey]</strong>
+    </div>
+}
+<div class="formDiv doner01">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <button id="loginButton" class="btn btn-default custom-btn">Login</button>
+        </div>
+        <div class="container-fluid col-mt-1">
+            <div class="row justify-content-center">
+                <div id="loginPanel" class="col-lg-10 formDiv">
+                    <h4 class="ffw-text-brown text-center titleMargin">Log In</h4>
+                    <hr />
+                    <form asp-controller="@StringConstants.User" asp-action="@StringConstants.Login" method="post">
+                        <div class="align-self-center">
+                            <div class="form-group">
+                                <label asp-for="Username" class="ffw-text-brown">Username</label>
+                                <input asp-for="Username" class="form-control" placeholder="Username" />
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="align-self-center">
+                            <div class="form-group">
+                                <label asp-for="Password" class="ffw-text-brown">Password</label>
+                                <input type="text" class="form-control" style="display:none" />
+                                <input type="password" class="form-control" style="display:none" />
+                                <input asp-for="Password" class="form-control" placeholder="Password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div  id="rememberMe" class="form-group">
+                                <label asp-for="RememberMe" class="ffw-text-brown">
+                                    <input asp-for="RememberMe" />
+                                    @Html.DisplayNameFor(m => m.RememberMe)
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <a id="forgotPassword" class="forgotPassword" asp-controller=@StringConstants.User asp-action=@StringConstants.ForgotPassword>Forgot your password?</a>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default custom-btn">Log in</button>
+                            </div>
+                        </div>
+                    </form>
+                    @{
+                        var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+                        if (loginProviders.Count == 0)
+                        {
+                            <p class="text-center text-danger">Invalid Username or Password.</p>
+                            <div class="d-flex justify-content-center mt-4">
+                                <a id="navigationAnchor" class="btn btn-default custom-btn" asp-page="./Login">Back</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <form asp-action=@StringConstants.ExternalLogin asp-route-returnurl="@ViewData[StringConstants.ViewDataReturnUrl]" method="post" class="mx-auto w-50">
+                                <div>
+                                    <p>
+                                        @foreach (var provider in loginProviders)
+                                        {
+                                            <h2 class="ffw-text-brown text-center">Login with @provider.DisplayName</h2>
+                                            <hr class="hr-size ffw-color-white" />
+                                            <div class="d-flex justify-content-center">
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </p>
+                                </div>
+                            </form>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-default custom-btn" asp-area="" asp-controller="Home" asp-action="Index">Back</a>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#loginButton").click(function () {
+            $("#loginPanel").toggle(700)
+        });
+    });
+</script>

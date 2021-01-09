@@ -1,0 +1,147 @@
+﻿@model UserDetailsViewModel
+@{
+    ViewData["Title"] = "My Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@inject UserManager<FastFoodUser> userManager
+@{
+    var userName = userManager.GetUserName(User);
+    var user = userManager.Users.FirstOrDefault(e => e.UserName == userName);
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">@ViewData["Title"]</h2>
+
+@if (TempData[TempDataKeys.TempDataSuccessEditKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessEditKey]</strong>
+    </div>
+}
+<div class="formDiv burger02">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <button id="profileButton" class="btn btn-default custom-btn">Profile</button>
+        </div>
+        <div class="row justify-content-center">
+            <div id="profilePanel" class="col-lg-10 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">@ViewData["Title"]</h4>
+                <hr />
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            @if (Model.Picture == null)
+                            {
+                                <img id="profilePhoto" class="img-responsive img-thumbnail" src="~/images/defaultPicture/defaultProfile.png" />
+                            }
+                            else
+                            {
+                                @if (user.PasswordHash == null)
+                                {
+                                    <img id="profilePhoto" class="img-responsive img-thumbnail" src=@Model.Picture />
+                                }
+                                else
+                                {
+                                    <img id="profilePhoto" class="img-responsive img-thumbnail" src="@String.Format("data:image/jpg;base64,{0}", Model.Picture)" />
+                                }
+                            }
+                            @if (user.PasswordHash != null)
+                            {
+                                <div class="d-flex justify-content-between mt-4">
+                                    <a class="btn btn-default custom-btn" asp-area="">Change Picture</a>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-sm-4">
+                            @if (Model.FirstName == null)
+                            {
+                                <p class="ffw-text-brown">Firstname: N/A</p>
+                            }
+                            else
+                            {
+                                <p class="ffw-text-brown">Firstname: @Model.FirstName</p>
+                            }
+
+                            @if (Model.LastName == null)
+                            {
+                                <p class="ffw-text-brown">Lastname: N/A</p>
+                            }
+                            else
+                            {
+                                <p class="ffw-text-brown">Lastname: @Model.LastName</p>
+                            }
+
+                            @if (Model.Username == null)
+                            {
+                                <p class="ffw-text-brown">Username/Email: N/A</p>
+                            }
+                            else
+                            {
+                                <p class="ffw-text-brown">Username/Email: @Model.Username</p>
+                            }
+
+                            @if (Model.BirthDate == DateTime.MinValue)
+                            {
+                                <p class="ffw-text-brown">BirthDate: N/A</p>
+                            }
+                            else
+                            {
+                                <p class="ffw-text-brown">Date Of Birth: @Model.BirthDate</p>
+                            }
+
+                            @if (Model.Address == null)
+                            {
+                                <p class="ffw-text-brown">Address: N/A</p>
+                            }
+                            else
+                            {
+                                <p class="ffw-text-brown">Address: @Model.Address</p>
+                            }
+
+                            @if (Model.Address == null)
+                            {
+                                <p class="ffw-text-brown">Phone number: N/A</p>
+                            }
+                            else
+                            {
+                                <p class="ffw-text-brown">Phone number: @Model.PhoneNumber</p>
+                            }
+                            <div class="d-flex justify-content-center mt-4">
+                                <a class="btn btn-default custom-btn" asp-controller=@StringConstants.User asp-action=@StringConstants.Edit>Edit</a>
+                            </div>
+                            <div class="d-flex justify-content-center mt-4">
+                                <a class="btn btn-default custom-btn" asp-area="" asp-controller=@StringConstants.Home asp-action=@StringConstants.Index>Change Password</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="btn-group" role="group" aria-label="Group">
+                                    <a class="btn btn-default custom-btn" asp-area="" asp-controller="Home" asp-action="Index">My Orders</a>
+                                    <a class="btn btn-default custom-btn" asp-area="" asp-controller="Home" asp-action="Index">My Complaints</a>
+                                    <a class="btn btn-default custom-btn" asp-area="" asp-controller="Home" asp-action="Index">My Recepies</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-default custom-btn" asp-area="" asp-controller="Home" asp-action="Index">Back</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#profileButton").click(function () {
+            $("#profilePanel").toggle(700)
+        });
+    });
+</script>
+

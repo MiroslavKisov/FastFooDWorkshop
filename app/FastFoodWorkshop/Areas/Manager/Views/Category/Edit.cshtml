@@ -1,0 +1,52 @@
+﻿@model CategoryViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manager/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">Edit</h2>
+
+<div class="formDiv pizza08">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <button id="categoryEditButton" class="btn btn-default custom-btn">Edit Category</button>
+        </div>
+        <div class="row justify-content-center">
+            <div id="categoryEditPanel" class="col-xs-1 col-sm-3 col-md-4 col-lg-6 formDiv">
+                <h4 class="ffw-text-brown text-center titleMargin">Edit Category</h4>
+                <hr />
+                <form method="post" asp-controller=@StringConstants.Category asp-action=@StringConstants.Edit>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="align-self-center">
+                        <div class="form-group">
+                            <label asp-for="Name" class="ffw-text-brown">Category Name</label>
+                            <input type="text" asp-for="Name" name="Name" class="form-control" placeholder="Category Name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-4">
+                        <button type="submit" class="btn btn-default custom-btn">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-around mt-4">
+    <a class="btn btn-default custom-btn" asp-area="@StringConstants.Manager" asp-controller=@StringConstants.Menu asp-action=@StringConstants.Menus>Menus</a>
+    <a class="btn btn-default custom-btn" asp-area="@StringConstants.Manager" asp-controller=@StringConstants.Category asp-action=@StringConstants.Categories>Categories</a>
+    <a class="btn btn-default custom-btn" asp-area="@StringConstants.Manager" asp-controller=@StringConstants.Products asp-action=@StringConstants.Products>Products</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $(document).ready(function () {
+        $("#categoryEditButton").click(function () {
+            $("#categoryEditPanel").toggle(700)
+        });
+    });
+</script>

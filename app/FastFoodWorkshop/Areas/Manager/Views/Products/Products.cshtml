@@ -1,0 +1,96 @@
+﻿@model ProductsViewModel
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Areas/Manager/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2 class="ffw-text-brown text-center titleMargin">Products</h2>
+<hr />
+
+@if (TempData[TempDataKeys.TempDataSuccessDeleteProductKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessDeleteProductKey]</strong>
+    </div>
+}
+
+@if (TempData[TempDataKeys.TempDataSuccessEditProductKey] != null)
+{
+    <div id="successMessage" class="alert alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none">&times;</a>
+        <strong>@TempData[TempDataKeys.TempDataSuccessEditProductKey]</strong>
+    </div>
+}
+
+@if (Model.Products.Count == 0)
+{
+    <h2 class="ffw-text-brown text-center titleMargin">No Products</h2>
+}
+else
+{
+    <table id="tableCategories" class="table table-striped table-ffw">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Picture</th>
+                <th scope="col">Protein</th>
+                <th scope="col">Carbohydrates</th>
+                <th scope="col">Fat</th>
+                <th scope="col">Calories</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Menu</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <th scope="row">@product.Name</th>
+                    <td><img id="productPhoto" class="img-responsive img-thumbnail" src="@String.Format("data:image/jpg;base64,{0}", product.PictureAsString)" /></td>
+                    <td>@product.ProteinsQuantity gr.</td>
+                    <td>@product.CarbohydratesQuantity gr.</td>
+                    <td>@product.FatQuantity gr.</td>
+                    <td>@product.TotalCalories kcal</td>
+                    <td>@product.Price</td>
+
+                    @if (product.CategoryName != null)
+                    {
+                        <td>@product.CategoryName</td>
+                    }
+                    else
+                    {
+                        <td>No Category</td>
+                    }
+
+                    @if (product.MenuName != null)
+                    {
+                        <td>@product.MenuName</td>
+                    }
+                    else
+                    {
+                        <td>No Menu</td>
+                    }
+
+                    <td>
+                        <div class="justify-content-around">
+                            <a class="btn btn-default table-btn" asp-controller="@StringConstants.Products" asp-action="@StringConstants.Edit/@product.Id">Edit</a>
+                            <a class="btn btn-default table-btn" asp-controller="@StringConstants.Products" asp-action="@StringConstants.Delete/@product.Id">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-default custom-btn" asp-area="@StringConstants.Manager" asp-controller=@StringConstants.Manage asp-action=@StringConstants.Manage>Back</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
